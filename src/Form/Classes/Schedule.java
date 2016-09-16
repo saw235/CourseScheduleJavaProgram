@@ -1,14 +1,9 @@
 package Form.Classes;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author User
+ * Author: Saw Xue Zheng
+ * Description: Definition of class Schedule
+ *              Performs various logic behind scheduling, perform checking if the course is valid, is in conflict etc...
  */
 import java.util.ArrayList;
 import java.io.*;
@@ -27,44 +22,44 @@ public class Schedule implements Serializable{
     public boolean isConflict(Course course)
     {
         
-        
+        //if no course, can't have conflict
         if (course_list.isEmpty())
         {
             return false;
         }
                 
         //for each course
-        //check if there is no overlap
+        //check if there is overlap
         for (Course c : course_list)
         {
-            //two cases to check
-            //case 1: 
-            //                      t1 -------t2
-            //         t3---t4
-            //------------------------------------------------
-            if (!((course.getStartTime() < c.getStartTime() && (course.getEndTime() < c.getStartTime())) || course.getStartTime() > c.getEndTime() && course.getEndTime() > c.getEndTime()))
-            {
-                if ((course.getEndTime() == c.getStartTime()) || (course.getStartTime() == c.getEndTime()))
-                        {
-                            continue;
-                        }
-                else
-                {return true;}
-            }
-            //case 2:
+            //if not this case
             //                 t1 -------t2
             //                                  t3-----t4
             //-----------------------------------------------
-           
+            //or this case
+            //                 t1 -------t2
+            //      t3-----t4
+            //-----------------------------------------------
+            if (!((course.getStartTime() < c.getStartTime() && (course.getEndTime() < c.getStartTime())) || course.getStartTime() > c.getEndTime() && course.getEndTime() > c.getEndTime()))
+            {
+                if ((course.getEndTime() == c.getStartTime()) || (course.getStartTime() == c.getEndTime())) 
+                        {
+                            continue;//ignores boundary cases
+                        }
+                else
+                {return true;} //then there is a conflict
+            }
+
+           //if exactly overlapping
             if ((course.getStartTime() == c.getStartTime()) && (course.getEndTime() == c.getEndTime()))
             {
-                return true;
+                return true; //there is a conflict
             }
             
         }
         
-        //anything else other than these 2 cases is overlapping     
-        //there is a conflict otherwise
+        //anything else other than these 2 cases is not overlapping    
+        //there is no conflict otherwise
         return false;
     }
     
