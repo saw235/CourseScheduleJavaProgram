@@ -1,18 +1,15 @@
 package Form.Classes;
 
+/**
+ * Author: Saw Xue Zheng
+ * Description: Definition of class RoomListing
+ *              Stores arraylist of rooms. Able to perform different methods like add, remove, schedule courses to the room etc...
+ */
 
 import java.util.ArrayList;
 import java.lang.IllegalArgumentException;
 import java.io.*;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author User
- */
+
 public class RoomListing implements Serializable{
 
     private ArrayList<Room> roomlist = new ArrayList<Room>();
