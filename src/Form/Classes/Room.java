@@ -1,15 +1,11 @@
-package Form.Classes;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author User
+ * Author: Saw Xue Zheng
+ * Description: Definition of class Room
+ *              Able to return various information regarding the Room - Schedule of the room, room number etc...
  */
+
+
+package Form.Classes;
 
 import java.util.ArrayList; 
 import java.io.*;
